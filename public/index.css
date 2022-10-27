@@ -1,0 +1,144 @@
+body {
+	background-image: url('./assets/wallpaper.jpg');
+	padding: 10px 5px 10px;
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+}
+
+.input-column {
+	background-color: brown;
+	width: 170px;
+	margin: 0 5px 0;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 5px;
+}
+
+#board-column {
+	width: calc(100vw - 150px);
+	display: flex;
+	justify-content: flex-start;
+	flex-wrap: wrap;
+}
+
+.memo {
+	background-color: #f5e37b;
+	width: 150px;
+	height: 150px;
+	box-shadow: 5px 5px black;
+	margin: 15px;
+	padding: 10px;
+}
+
+.title-column {
+	width: 50px;
+}
+
+.title-word {
+	width: 40px;
+	height: 40px;
+	padding: 4px;
+	margin: 1px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: white;
+	color: black;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.submit {
+	font-size: 10px;
+	width: 50px;
+	height: auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-weight: bold;
+	margin: 5px 0 5px;
+}
+
+#input-admin-title {
+	color: red;
+	font-size: 15px;
+	font-weight: bold;
+}
+
+.input-group {
+	width: 80%;
+	margin: 5px;
+}
+
+.icon-button {
+	background-color: white;
+	font-size: 10px;
+	border-radius: 20px;
+	width: 25px;
+	height: 25px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+}
+
+.icon-button:hover {
+	cursor: pointer;
+}
+
+.bin {
+	right: 5px;
+	top: 5px;
+}
+
+.writepad {
+	right: 5px;
+	bottom: 5px;
+}
+
+.heart {
+	left: 5px;
+	bottom: 5px;
+}
+
+.cracked-heart {
+	left: 5px;
+	top: 5px;
+}
+
+#file-submit,
+#login-submit {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+#file-submit label {
+	font-size: 10px;
+	font-weight: bold;
+}
+
+#files {
+	width: 90%;
+}
+
+.outer-memo {
+	position: relative;
+}
+
+#login-form {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+#greeting {
+	color: red;
+	font-weight: bold;
+}

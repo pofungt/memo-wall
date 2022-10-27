@@ -1,0 +1,15 @@
+body {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	background-color: rgb(181, 107, 107);
+}
+
+.memo {
+	background-color: #f5e37b;
+	width: 150px;
+	height: 150px;
+	box-shadow: 5px 5px black;
+	margin: 15px;
+	padding: 10px;
+}

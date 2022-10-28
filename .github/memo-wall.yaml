@@ -1,0 +1,32 @@
+name: memo-wall
+
+on:
+  push:
+    branches:
+      - '*'
+  workflow_dispatch:
+
+env:
+  POSTGRES_DB: memo-wall-test
+  POSTGRES_USER: postgres
+  POSTGRES_PASSWORD: postgres
+  POSTGRES_HOST: postgres
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    container: node:latest
+    services:
+      postgres:
+        image: postgres
+        env:
+          POSTGRES_DB: ${{env.POSTGRES_DB}}
+          POSTGRES_PASSWORD: ${{env.POSTGRES_PASSWORD}}
+        ports:
+          - 5432:5432
+  build:
+    - uses: action/checkout@v3
+    - run:
+      yarn install
+      yarn knex migrate:latest --env test
+      yarn jest

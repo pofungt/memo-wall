@@ -85,7 +85,7 @@ io.on('connection', function (socket) {
 
 	if (req.session['user']) {
 		socket.join(`user-${req.session['user']}`);
-		console.log(`user-${req.session['user']} room joined!`);
+		// console.log(`user-${req.session['user']} room joined!`);
 	}
 });
 

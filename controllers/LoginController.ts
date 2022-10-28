@@ -22,8 +22,9 @@ export class LoginController {
 						user: loginUser.username
 					});
 				}
+			} else {
+				res.status(401).json({ login: false });
 			}
-			res.status(401).json({ login: false });
 		} catch (e) {
 			logger.error(e);
 			res.status(500).json({

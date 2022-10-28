@@ -1,13 +1,13 @@
 import { getMemos } from './getMemos.js';
 import { listen } from './listen.js';
 
-const socket = io.connect();
-
-socket.on('new-memo', async (data) => {
-	getMemos(data);
-});
 
 async function start() {
+	const socket = await io.connect();
+	
+	socket.on('new-memo', async (data) => {
+		getMemos(data);
+	});
 	const res = await fetch('/memo');
 	const memos = await res.json();
 	getMemos(memos);
@@ -66,8 +66,6 @@ async function start() {
 			const result = await res.json();
 			form.reset();
 			if (result.status) {
-				socket.disconnect();
-				socket.connect();
 				document.getElementById('login-form').style.display = 'none';
 				alert('Login Successful!');
 				document.getElementById(

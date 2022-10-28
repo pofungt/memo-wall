@@ -24,20 +24,30 @@ describe("Memo Service", () => {
     it('should get Memo from DB', async () => {
         const memos = (await memoService.getMemos()).filter(each => memosId.includes(each.id));
 
-        expect(memos).toMatchObject([
-            {
-                content: "Test Content 1",
-                image: "abc.jpg"
-            },
-            {
-                content: "Test Content Number Two"
-            }
-        ]);
+        expect(memos).toEqual(expect.arrayContaining(
+            [
+                expect.objectContaining(
+                    {
+                        content: "Test Content 1",
+                        image: "abc.jpg"
+                    }
+                )
+            ]
+        ));
+        expect(memos).toEqual(expect.arrayContaining(
+            [
+                expect.objectContaining(
+                    {
+                        content: "Test Content Number Two"
+                    }
+                )
+            ]
+        ));
     });
 
     it('should post Memo to DB for only once', async () => {
         const originalMemosList = await knex.select("*").from("memos");
-        const newMemosList = await memoService.postMemos("Post Test","post.jpg");
+        const newMemosList = await memoService.postMemos("Post Test", "post.jpg");
         const insertedMemo = newMemosList.at(-1);
 
         expect(newMemosList.length).toBe(originalMemosList.length + 1);
@@ -52,17 +62,17 @@ describe("Memo Service", () => {
         const updateMemo = await knex.select("*").from("memos").where("id", memosId[0]);
 
         expect(updateMemo.length).toBe(1);
-        expect(updateMemo).toMatchObject([{content: "Updated Content"}]);
+        expect(updateMemo).toMatchObject([{ content: "Updated Content" }]);
     });
 
-    it('should delete Memo in DB', async ()=>{
+    it('should delete Memo in DB', async () => {
         await memoService.deleteMemos(memosId[1]);
         const deletedMemo = await knex.select("*").from("memos").where("id", memosId[1]);
 
         expect(deletedMemo.length).toBe(0);
     });
 
-    afterEach(async ()=>{
+    afterEach(async () => {
         await knex("memos").whereIn("id", memosId).del();
     })
 

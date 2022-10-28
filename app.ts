@@ -83,8 +83,8 @@ io.on('connection', function (socket) {
 	const req = socket.request as express.Request;
 	req.session.save();
 
-	if (req.session['user']) {
-		socket.join(`user-${req.session['user']}`);
+	if (req.session.user) {
+		socket.join(`user-${req.session.user}`);
 	}
 });
 

@@ -13,7 +13,7 @@ export class LikeMemosController {
 			);
 			res.json(result);
 		} catch (e) {
-			logger.error(e);
+			// logger.error(e);
 			res.status(500).json({ msg: '[MEM002]: Failed to get Like Memos' });
 		}
 	};
@@ -47,7 +47,7 @@ export class LikeMemosController {
 			);
 			res.json(result);
 		} catch (e) {
-			logger.error(e);
+			// logger.error(e);
 			res.status(500).json({
 				msg: '[MEM004]: Failed to delete Like Memos'
 			});

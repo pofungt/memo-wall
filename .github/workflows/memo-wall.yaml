@@ -37,7 +37,7 @@ jobs:
     needs: testing
     steps:
       - name: ssh to pull latest version
-        uses: fifsky/ssh-action@main
+        uses: fifsky/ssh-action@master
         with:
           command: |
             cd memo-wall

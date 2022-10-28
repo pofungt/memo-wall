@@ -76,7 +76,7 @@ export class LoginController {
 		);
 		const fetchedUser = await fetchRes.json();
 		const user = await this.loginService.loginGoogle(fetchedUser.email);
-		req.session.user = user.username;
+		req.session.user = user.id;
 		res.redirect('/index.html');
 	};
 }

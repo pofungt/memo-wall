@@ -28,9 +28,9 @@ jobs:
     steps:
       - uses: action/checkout@v3
       - run: |
-        yarn install
-        yarn knex migrate:latest --env test
-        yarn jest
+          yarn install
+          yarn knex migrate:latest --env test
+          yarn jest
   
   deploy:
     runs-on: ubuntu-latest

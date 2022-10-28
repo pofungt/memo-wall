@@ -45,7 +45,7 @@ jobs:
             yarn install
             yarn knex migrate:latest --env production
             yarn knex seed:run --env production
-            forever restart 0
+            forever restart -c "yarn start" .
           host: memowall.duncantang.dev
           user: ubuntu
           key: ${{secrets.SSH_PRIVATE_KEY}}

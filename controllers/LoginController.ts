@@ -26,7 +26,8 @@ export class LoginController {
 				res.status(401).json({ login: false });
 			}
 		} catch (e) {
-			logger.error(e);
+			console.log(e)
+			// logger.error(e);
 			res.status(500).json({
 				msg: '[LOG001]: Failed to check Login Status'
 			});
@@ -58,7 +59,8 @@ export class LoginController {
 				res.status(401).json({ status: false });
 			}
 		} catch (e) {
-			logger.error(e);
+			console.log(e)
+			// logger.error(e);
 			res.status(500).json({ msg: '[LOG002]: Failed to check Login' });
 		}
 	};

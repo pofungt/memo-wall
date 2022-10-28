@@ -102,5 +102,5 @@ app.use((req, res) => {
 
 const PORT = 8080;
 server.listen(PORT, () => {
-	console.log(`Listening at http://localhost:${PORT}/`);
+	console.log(`Listening at http://memowall.duncantang.dev:${PORT}/`);
 });

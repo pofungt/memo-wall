@@ -1,7 +1,7 @@
 import { Page, chromium, Browser } from "playwright";
 import "../app";
 
-describe("End-to-End", () => {
+xdescribe("End-to-End", () => {
     let page: Page;
     let browser: Browser;
 

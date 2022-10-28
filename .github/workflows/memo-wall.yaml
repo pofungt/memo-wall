@@ -37,11 +37,11 @@ jobs:
     needs: testing
     steps:
       - name: ssh to pull latest version
-      - uses: fifsky/ssh-action@master
+      - uses: fifsky/ssh-action@main
       - with:
         command: |
           cd memo-wall
-          git pull origin master
+          git pull origin main
           yarn install
           yarn knex migrate:latest --env production
           forever restart 0

@@ -31,20 +31,3 @@ jobs:
           yarn install
           yarn knex migrate:latest --env test
           yarn jest
-  
-  deploy:
-    runs-on: ubuntu-latest
-    needs: testing
-    steps:
-      - name: ssh to pull latest version
-      - uses: fifsky/ssh-action@master
-      - with:
-        command: |
-          cd memo-wall
-          git pull origin master
-          yarn install
-          yarn knex migrate:latest --env production
-          forever restart 0
-        host: memowall.duncantang.dev
-        user: ubuntu
-        key: ${{secrets.SSH_PRIVATE_KEY}}

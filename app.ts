@@ -42,7 +42,7 @@ declare module 'express-session' {
 
 const grantExpress = grant.express({
 	defaults: {
-		origin: 'http://localhost:8080',
+		origin: 'https://memowall.duncantang.dev',
 		transport: 'session',
 		state: true
 	},

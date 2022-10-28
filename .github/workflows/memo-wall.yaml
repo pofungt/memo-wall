@@ -39,12 +39,12 @@ jobs:
       - name: ssh to pull latest version
         uses: fifsky/ssh-action@main
         with:
-        command: |
-          cd memo-wall
-          git pull origin main
-          yarn install
-          yarn knex migrate:latest --env production
-          forever restart 0
-        host: memowall.duncantang.dev
-        user: ubuntu
-        key: ${{secrets.SSH_PRIVATE_KEY}}
+          command: |
+            cd memo-wall
+            git pull origin main
+            yarn install
+            yarn knex migrate:latest --env production
+            forever restart 0
+          host: memowall.duncantang.dev
+          user: ubuntu
+          key: ${{secrets.SSH_PRIVATE_KEY}}

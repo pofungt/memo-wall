@@ -48,9 +48,9 @@ describe("Memo Service", () => {
     it('should post Memo to DB for only once', async () => {
         const originalMemosList = await knex.select("*").from("memos");
         const newMemosList = await memoService.postMemos("Post Test", "post.jpg");
-        const insertedMemo = newMemosList.at(-1);
+        const insertedMemo = newMemosList?.at(-1);
 
-        expect(newMemosList.length).toBe(originalMemosList.length + 1);
+        expect(newMemosList?.length).toBe(originalMemosList.length + 1);
         expect(insertedMemo).toMatchObject({
             content: "Post Test",
             image: "post.jpg"

@@ -59,26 +59,31 @@ export class LoginController {
 				res.status(401).json({ status: false });
 			}
 		} catch (e) {
-			console.log(e)
-			// logger.error(e);
+			logger.error(e);
 			res.status(500).json({ msg: '[LOG002]: Failed to check Login' });
 		}
 	};
 
 	loginGoogle = async (req: Request, res: Response) => {
-		const accessToken = req.session?.['grant'].response.access_token;
-		const fetchRes = await fetch(
-			'https://www.googleapis.com/oauth2/v2/userinfo',
-			{
-				method: 'GET',
-				headers: {
-					Authorization: `Bearer ${accessToken}`
+		try{
+			logger.debug('Before reading token');
+			const accessToken = req.session?.['grant'].response.access_token;
+			const fetchRes = await fetch(
+				'https://www.googleapis.com/oauth2/v2/userinfo',
+				{
+					method: 'GET',
+					headers: {
+						Authorization: `Bearer ${accessToken}`
+					}
 				}
-			}
-		);
-		const fetchedUser = await fetchRes.json();
-		const user = await this.loginService.loginGoogle(fetchedUser.email);
-		req.session.user = user.id;
-		res.redirect('/index.html');
+			);
+			const fetchedUser = await fetchRes.json();
+			const user = await this.loginService.loginGoogle(fetchedUser.email);
+			req.session.user = user.id;
+			res.redirect('/index.html');
+		} catch(e) {
+			logger.error(e);
+			res.status(500).json({ msg: '[LOG003]: Failed to google Login' });
+		}
 	};
 }

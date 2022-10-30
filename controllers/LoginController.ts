@@ -13,7 +13,7 @@ export class LoginController {
 			logger.debug('Before reading memos.json');
 			const user_id = req.session.user;
 			if (user_id) {
-				const loginUser: User = await this.loginService.getLoginStatus(
+				const loginUser: User | undefined = await this.loginService.getLoginStatus(
 					user_id
 				);
 				if (loginUser) {
@@ -38,7 +38,7 @@ export class LoginController {
 		try {
 			logger.debug('Before reading memos.json');
 			const username = req.body.username as string;
-			const loginUser: User = await this.loginService.checkLogin(
+			const loginUser: User | undefined = await this.loginService.checkLogin(
 				username
 			);
 			if (loginUser) {

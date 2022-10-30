@@ -71,7 +71,7 @@ export function listen() {
 		const result = await res.json()
 		if (result.status) {
 			document.getElementById('login-form').style.display = 'block';
-			document.getElementById('logout-button').style.display = 'none';
+			document.querySelector('.logout-button').style.display = 'none';
 			document.getElementById('greeting').innerHTML = ``;
 		}
 	})

@@ -18,7 +18,7 @@ async function start() {
 	const loginStatus = await res_login.json();
 	if (loginStatus.status) {
 		document.getElementById('login-form').style.display = 'none';
-		document.getElementById('logout-button').style.display = 'block';
+		document.querySelector('.logout-button').style.display = 'block';
 		document.getElementById('greeting').innerHTML = `Hi, admin user!`;
 	}
 

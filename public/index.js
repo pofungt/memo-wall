@@ -68,6 +68,7 @@ async function start() {
 			form.reset();
 			if (result.status) {
 				document.getElementById('login-form').style.display = 'none';
+				document.querySelector('.logout-button').style.display = 'block';
 				alert('Login Successful!');
 				document.getElementById(
 					'greeting'

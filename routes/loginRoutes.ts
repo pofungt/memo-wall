@@ -7,6 +7,7 @@ export const loginRoutes = () => {
 	loginRoutes.get('/', loginController.getLoginStatus);
 	loginRoutes.post('/', loginController.checkLogin);
 	loginRoutes.get('/google', loginController.loginGoogle);
+	loginRoutes.delete('/', loginController.logout)
 
 	return loginRoutes;
 };

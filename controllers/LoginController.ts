@@ -86,4 +86,15 @@ export class LoginController {
 			res.status(500).json({ msg: '[LOG003]: Failed to google Login' });
 		}
 	};
+
+	logout = async (req: Request, res: Response) => {
+		try{
+			logger.debug('Before logout');
+			delete req.session.user;
+			res.json({status: true});
+		} catch(e) {
+			logger.error(e);
+			res.status(500).json({ msg: '[LOG004]: Failed to Logout' });
+		}
+	};
 }

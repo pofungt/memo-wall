@@ -6,6 +6,7 @@ export function listen() {
 	const deleteButtons = document.querySelectorAll('.bin');
 	const likeButtons = document.querySelectorAll('.heart');
 	const unlikeButtons = document.querySelectorAll('.cracked-heart');
+	const logoutButton = document.querySelector('#logout-button');
 
 	updateButtons.forEach((element, index) => {
 		element.addEventListener('click', async function () {
@@ -62,4 +63,16 @@ export function listen() {
 			await res.json();
 		});
 	});
+
+	logoutButton.addEventListener('click', async ()=>{
+		const res = await fetch('/login', {
+			method: 'DELETE'
+		});
+		const result = await res.json()
+		if (result.status) {
+			document.getElementById('login-form').style.display = 'block';
+			document.getElementById('logout-button').style.display = 'none';
+			document.getElementById('greeting').innerHTML = ``;
+		}
+	})
 }
